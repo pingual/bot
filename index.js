@@ -39,18 +39,13 @@ Client.on("message", message => {
         bdd["coins-utilisateurs"][message.member.id] = bdd["coins-utilisateurs"][message.member.id] + 1;
         Savebdd();
     }
-
-    if(message.content == "reponse"){
-        message.channel.send(Reponse);
-    }
-
+    
     if(message.content == "score"){
         message.channel.send("Tu as " + bdd["coins-utilisateurs"][message.member.id] + " points!");
     }
 
     if(ReponseTrouvee){
-        message.react("✅");
-        for (let DureeAleatoire = 0; DureeAleatoire < 99; DureeAleatoire++){
+        for (let DureeAleatoire = Math.floor(Math.random() * 500000 + 1); DureeAleatoire < 999999; DureeAleatoire++){
             console.log(DureeAleatoire);
         }
         message.channel.send(Calcul());
