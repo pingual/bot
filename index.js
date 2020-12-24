@@ -7,19 +7,9 @@ Client.once("ready", () => {
     console.log("Ready!");
 });
 
-let ReponseTrouvee;
 let Reponse;
-let Felicitation;
 
 Client.on("message", message => {
-
-    if(message.author.bot){
-        if(message.content == "Félicitation, tu as trouvé la bonne réponse!"){
-            message.channel.send(Attente());
-            ReponseTrouvee = true;
-        }
-    }
-
     if(message.author.bot) return;
     if(message.channel.type == "dm") return;
 
@@ -43,27 +33,9 @@ Client.on("message", message => {
     if(message.content == "score"){
         message.channel.send("Tu as " + bdd["coins-utilisateurs"][message.member.id] + " points!");
     }
-
-    if(ReponseTrouvee){
-        for (let DureeAleatoire = Math.floor(Math.random() * 500000 + 1); DureeAleatoire < 999999; DureeAleatoire++){
-            console.log(DureeAleatoire);
-        }
-        message.channel.send(Calcul());
-    }
-
 });
 
-function Attente() {
-    for  (let DureeAleatoire = 0; DureeAleatoire < 99; DureeAleatoire++){
-        console.log(DureeAleatoire);
-    }
-    Calcul();
-    return Calcul()
-}
-
 function Calcul() {
-    ReponseTrouvee = false;
-    Felicitation = false;
     let Nombre1 = Math.floor(Math.random() * Math.floor(11));
     let Nombre2 = Math.floor(Math.random() * Math.floor(11));
     let Nombre3 = Math.floor(Math.random() * Math.floor(11));
